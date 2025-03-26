@@ -1,0 +1,30 @@
+# Adiciona Produto atraves do ID do produto
+POST http://localhost:8080/cart/update
+Content-type: application/json
+
+{
+  "email": "example@gmail.com",
+  "productId": "123456-1234-1234-1234-1234567890"
+}
+
+###
+
+#Remove um Produto atraves do ID do produto
+POST http://localhost:8080/cart/remove
+Content-type: application/json
+
+{
+  "email": "example@gmail.com",
+  "productId": "123456-1234-1234-1234-1234567890"
+}
+
+###
+
+#Simula Compra final
+POST http://localhost:8080/cart/finish
+Content-type: application/json
+
+{
+  "email": "example@gmail.com",
+  "status": "comprou OU cancelou"
+}

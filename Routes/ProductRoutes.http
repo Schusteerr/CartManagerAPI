@@ -1,0 +1,31 @@
+# Criar um produto
+POST http://localhost:8080/products
+Content-type: application/json
+
+{
+  "name": "example",
+  "value": "123"
+}
+###
+
+# Listar os produtos
+GET http://localhost:8080/products
+###
+
+###
+
+# Atualizar um produto por ID
+PUT http://localhost:8080/products/ID_AQUI
+Content-type: application/json
+
+{
+  "name": "",
+  "value": ""
+}
+
+###
+
+# Deleta um produto por ID
+DELETE http://localhost:8080/products/ID_AQUI
+
+

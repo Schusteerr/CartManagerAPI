@@ -1,0 +1,36 @@
+# Criar um usuário
+POST http://localhost:8080/userpage
+Content-type: application/json
+
+{
+  "name": "example",
+  "email": "example@gmail.com",
+  "password": "senha123"
+}
+###
+
+# Listar todos os usuarios
+GET http://localhost:8080/userpage
+###
+
+# Listar um usuario especifico por ID
+GET http://localhost:8080/userpage/ID_AQUI
+
+###
+
+# Atualizar um usuario por ID
+PUT http://localhost:8080/userpage/ID_AQUI
+Content-type: application/json
+
+{
+  "name": "",
+  "email": "",
+  "password": ""
+}
+
+###
+
+# Deletar um usuario por ID
+DELETE http://localhost:8080/userpage/ID_AQUI
+
+
