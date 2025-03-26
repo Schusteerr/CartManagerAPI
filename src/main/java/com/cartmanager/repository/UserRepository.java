@@ -1,8 +1,8 @@
-package leads.produtos.repository;
+package com.cartmanager.repository;
 
 import jakarta.transaction.Transactional;
-import leads.produtos.entity.Product;
-import leads.produtos.entity.User;
+import com.cartmanager.entity.Product;
+import com.cartmanager.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

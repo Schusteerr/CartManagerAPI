@@ -1,4 +1,4 @@
-package leads.produtos.controller;
+package com.cartmanager.controller;
 
 public record StatusDto(String status, String email) {
 

@@ -1,7 +1,7 @@
-package leads.produtos.controller;
+package com.cartmanager.controller;
 
-import leads.produtos.entity.Product;
-import leads.produtos.service.ProductService;
+import com.cartmanager.entity.Product;
+import com.cartmanager.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

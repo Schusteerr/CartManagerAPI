@@ -1,23 +1,24 @@
-package leads.produtos.service;
-
-import leads.produtos.controller.CreateUserDto;
-import leads.produtos.controller.UpdateUserDto;
-import leads.produtos.entity.User;
-import leads.produtos.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+package com.cartmanager.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.cartmanager.controller.CreateUserDto;
+import com.cartmanager.controller.UpdateUserDto;
+import com.cartmanager.entity.User;
+import com.cartmanager.repository.UserRepository;
+
 @Service
 public class UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;

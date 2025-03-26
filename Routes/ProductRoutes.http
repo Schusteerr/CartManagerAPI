@@ -3,8 +3,8 @@ POST http://localhost:8080/products
 Content-type: application/json
 
 {
-  "name": "example",
-  "value": "123"
+  "name": "picanha",
+  "value": "99"
 }
 ###
 
@@ -15,10 +15,11 @@ GET http://localhost:8080/products
 ###
 
 # Atualizar um produto por ID
-PUT http://localhost:8080/products/ID_AQUI
+PUT http://localhost:8080/products/005f5af2-ec5e-4eed-b204-42015fcb4168
 Content-type: application/json
 
 {
+  "status": "esgotado",
   "name": "",
   "value": ""
 }

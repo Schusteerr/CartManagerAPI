@@ -3,9 +3,9 @@ POST http://localhost:8080/userpage
 Content-type: application/json
 
 {
-  "name": "example",
-  "email": "example@gmail.com",
-  "password": "senha123"
+  "name": "ricardo",
+  "email": "rick@gmail.com",
+  "password": "senhaforte"
 }
 ###
 

@@ -1,4 +1,4 @@
-package leads.produtos.entity;
+package com.cartmanager.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

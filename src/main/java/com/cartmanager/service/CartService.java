@@ -1,10 +1,10 @@
-package leads.produtos.service;
+package com.cartmanager.service;
 
 import jakarta.transaction.Transactional;
-import leads.produtos.entity.Product;
-import leads.produtos.entity.User;
-import leads.produtos.repository.ProductRepository;
-import leads.produtos.repository.UserRepository;
+import com.cartmanager.entity.Product;
+import com.cartmanager.entity.User;
+import com.cartmanager.repository.ProductRepository;
+import com.cartmanager.repository.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;

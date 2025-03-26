@@ -1,6 +1,6 @@
-package leads.produtos.repository;
+package com.cartmanager.repository;
 
-import leads.produtos.entity.Product;
+import com.cartmanager.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,9 +1,9 @@
-package leads.produtos.service;
+package com.cartmanager.service;
 
-import leads.produtos.controller.CreateProductDto;
-import leads.produtos.controller.UpdateProductDto;
-import leads.produtos.entity.Product;
-import leads.produtos.repository.ProductRepository;
+import com.cartmanager.controller.CreateProductDto;
+import com.cartmanager.controller.UpdateProductDto;
+import com.cartmanager.entity.Product;
+import com.cartmanager.repository.ProductRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
