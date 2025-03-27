@@ -10,11 +10,13 @@ Projeto API para gerenciar usuários, produtos e carrinho de compras usando **Sp
 - [Futuras Melhorias](#🔮-futuras-melhorias)
 
 ## 🎯 Objetivos do Projeto
-1. **Gerenciamento de Usuários:** Permitir o cadastro, atualização, exclusão e consulta de informações dos usuários.
+1. **Gerenciamento Avançado de Usuários e Produtos:** Inclui operações de cadastro, atualização e exclusão, com validações robustas para evitar inconsistências e invalidade nos dados.
 2. **Gerenciamento de Produtos:** Proporcionar o registro, manutenção e exclusão de produtos disponíveis para compra.
-3. **Carrinho de Compras Dinâmico:** Oferecer funcionalidades para adicionar e remover produtos no carrinho de um usuário específico.
-4. **Finalização de Compra Simplificada:** Permitir que os usuários finalizem suas compras, limpem o carrinho e alterem o status de compra.
-5. **Postback de Notificações:** Gerar notificações automáticas via postback ao alterar o status do usuário para "comprou" ou "cancelou".
+3. **Carrinho de Compras Dinâmico:** Possui lógica integrada para garantir que cada adição ou remoção de produto respeite o estoque e previna alterações incorretas no carrinho.
+4. **Consultas Inteligentes ao Banco de Dados:** Implementa verificações detalhadas para garantir integridade, como validação de e-mails únicos, prevenção de atualizações conflitantes e controle de exclusões relacionadas.
+5. **Finalização de Compra Simplificada:** Facilita o processo de checkout, garantindo a limpeza do carrinho e alteração segura do status do usuário. Além disso, dispara notificações automáticas via postback para sistemas externos.
+6. **Postback de Notificações:** Gerar notificações automáticas via postback ao alterar o status do usuário para "comprou" ou "cancelou".
+7. **Manutenção e Escalabilidade:** O código foi escrito para ser modular, permitindo que novas funcionalidades sejam adicionadas de forma eficiente, com suporte a integração contínua.
 
 ## 🚀 Tecnologias Usadas
 - **Spring Boot 3.3.10**
