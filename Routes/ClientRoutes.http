@@ -3,9 +3,9 @@ POST http://localhost:8080/userpage
 Content-type: application/json
 
 {
-  "name": "ricardo",
-  "email": "rick@gmail.com",
-  "password": "senhaforte"
+  "name": "example",
+  "email": "example@gmail.com",
+  "password": "senha123"
 }
 ###
 
@@ -23,9 +23,9 @@ PUT http://localhost:8080/userpage/ID_AQUI
 Content-type: application/json
 
 {
-  "name": "",
-  "email": "",
-  "password": ""
+  "name": "example",
+  "email": "example@gmail.com",
+  "password": "senhaforte"
 }
 
 ###

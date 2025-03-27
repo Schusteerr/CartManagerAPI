@@ -23,6 +23,10 @@ public class ProductService {
 
     public UUID CriarProduto(CreateProductDto dto) {
 
+        if(productRepository.findByName(dto.name()) != null){
+            throw new RuntimeException("Produto com este nome ja existente");
+        }
+
         var entity = new Product(
                 UUID.randomUUID(),
                 "Disponível",
@@ -31,7 +35,6 @@ public class ProductService {
         );
 
         var ProdSave = productRepository.save(entity);
-        log.info("Produto {} criado com sucesso.", dto.name());
         return ProdSave.getId();
     }
 
@@ -57,9 +60,8 @@ public class ProductService {
             }
 
             productRepository.save(prod);
-            log.info("Produto {} atualizado com sucesso.", prod.getName());
         } else {
-            log.error("Erro: Produto com ID {} não encontrado.", prodId);
+            throw new RuntimeException("Produto com ID " + prodId + " não encontrado no carrinho.");
         }
 
     }
@@ -72,7 +74,8 @@ public class ProductService {
         if(ProdutoExiste){
             productRepository.deleteById(id);
         }else{
-            log.error("Erro: Produto com ID {} não encontrado.", prodId);
+            throw new RuntimeException("Produto com ID " + prodId + " não encontrado no carrinho.");
         }
     }
+
 }

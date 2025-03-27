@@ -1,6 +1,7 @@
 package com.cartmanager.controller;
 
 import com.cartmanager.service.CartService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
 
     private final CartService cartService;
-
     public CartController(CartService cartService) {
         this.cartService = cartService;
     }
@@ -20,10 +20,10 @@ public class CartController {
             cartService.AdicionarProdutoAoCarrinho(dto.email(), dto.productId());
             return ResponseEntity.ok("Produto adicionado ao carrinho com sucesso.");
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro ao adicionar ao carrinho: " + e.getMessage());
         }
     }
-
 
     @PostMapping("/remove")
     public ResponseEntity<String> RemoverProdutoDoCarrinho(@RequestBody AddRemoveProductDto dto) {
@@ -31,10 +31,10 @@ public class CartController {
             cartService.RemoverProdutoDoCarrinho(dto.email(), dto.productId());
             return ResponseEntity.ok("Produto removido com sucesso do carrinho.");
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro ao remover do carrinho: " + e.getMessage());
         }
     }
-
 
     @PostMapping("/finish")
     public ResponseEntity<String> MudarStatus(@RequestBody StatusDto dto) {
@@ -49,9 +49,9 @@ public class CartController {
             };
             return ResponseEntity.ok(mensagem);
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro: " + e.getMessage());
         }
     }
-
 
 }

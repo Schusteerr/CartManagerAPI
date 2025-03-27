@@ -3,8 +3,8 @@ POST http://localhost:8080/cart/update
 Content-type: application/json
 
 {
-  "email": "pedro@gmail.com",
-  "productId": "024493b0-eab7-47a5-bc30-e7dc828de5fe"
+  "email": "example@gmail.com",
+  "productId": "12345678-1234-1234-1234-1234567890"
 }
 
 ###
@@ -14,8 +14,8 @@ POST http://localhost:8080/cart/remove
 Content-type: application/json
 
 {
-  "email": "pedro@gmail.com",
-  "productId": "024493b0-eab7-47a5-bc30-e7dc828de5fe"
+  "email": "example@gmail.com",
+  "productId": "12345678-1234-1234-1234-1234567890"
 }
 
 ###
@@ -25,6 +25,6 @@ POST http://localhost:8080/cart/finish
 Content-type: application/json
 
 {
-  "email": "pedro@gmail.com",
-  "status": "cancelou"
+  "email": "example@gmail.com",
+  "status": "comprou || cancelou"
 }

@@ -3,6 +3,7 @@ package com.cartmanager.controller;
 
 import com.cartmanager.entity.User;
 import com.cartmanager.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,34 +23,60 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<String> CriarUsuario(@RequestBody CreateUserDto dto) {
-        var userId = userService.CriarUsuario(dto);
-        return ResponseEntity.created(URI.create("/userpage/" + userId)).body("Usuário " + dto.name() + " criado com sucesso. Seu ID é: "+userId);
+        try {
+            var userId = userService.CriarUsuario(dto);
+            return ResponseEntity.created(URI.create("/userpage/" + userId))
+                    .body("Usuário " + dto.name() + " criado com sucesso. Seu ID é: " + userId);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro de criação de usuário: " + e.getMessage());
+        }
     }
 
     @GetMapping
     public ResponseEntity<List<User>> ListarUsuarios() {
-        var usuarios = userService.ListarUsuarios();
-        return ResponseEntity.ok(usuarios);
+        try{
+            var usuarios = userService.ListarUsuarios();
+            return ResponseEntity.ok(usuarios);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<User> ListarPorId(@PathVariable("userId") String userId) {
-
-        var user = userService.ListarPorId(userId);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        try {
+            var user = userService.ListarPorId(userId);
+            return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<String> AtualizarUsuario(@PathVariable("userId") String userId, @RequestBody UpdateUserDto UpdateUserDto) {
-        userService.AtualizarUsuario(userId, UpdateUserDto);
-        return ResponseEntity.ok("Usuário atualizado com sucesso.");
+    public ResponseEntity<String> UpdateUser(@PathVariable("userId") String userId, @RequestBody UpdateUserDto UpdateUserDto) {
+
+        try{
+            userService.UpdateUser(userId, UpdateUserDto);
+            return ResponseEntity.ok("Usuário atualizado com sucesso.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro ao atualizar o usuário: " + e.getMessage());
+        }
+
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<String> DeletarUsuario(@PathVariable("userId") String userId) {
-        userService.DeletarUsuario(userId);
-        return ResponseEntity.ok("Usuario '" + userId + "' deletado com sucesso.");
-    }
+    public ResponseEntity<String> DeleteUser(@PathVariable("userId") String userId) {
 
+        try{
+            userService.DeleteUser(userId);
+            return ResponseEntity.ok("Usuário '" + userId + "' deletado com sucesso.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Erro ao deletar o usuário: " + e.getMessage());
+        }
+
+    }
 
 }

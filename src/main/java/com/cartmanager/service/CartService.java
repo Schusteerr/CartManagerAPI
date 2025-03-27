@@ -43,11 +43,9 @@ public class CartService {
         }
 
         user.getCart().add(product);
-        log.info("Produto adicionado ao carrinho.");
         user.setStatus("comprando");
         userRepository.save(user);
     }
-
 
     @Transactional
     public void RemoverProdutoDoCarrinho(String email, String productId) {
@@ -64,7 +62,6 @@ public class CartService {
             throw new RuntimeException("Produto com ID " + productId + " não encontrado no carrinho.");
         }
 
-        log.info("Produto removido do carrinho.");
         userRepository.save(user);
     }
 
@@ -84,17 +81,13 @@ public class CartService {
         user.setStatus(newStatus);
 
         if ("comprou".equalsIgnoreCase(newStatus)) {
-            log.info("Compra concluída, carrinho limpo.");
             user.getCart().clear();
         }
         if("cancelou".equalsIgnoreCase(newStatus)){
-            log.info("Compra cancelada, carrinho limpo.");
             user.getCart().clear();
         }
 
         userRepository.save(user);
     }
-
-
 
 }

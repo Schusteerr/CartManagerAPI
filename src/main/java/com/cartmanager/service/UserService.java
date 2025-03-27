@@ -26,6 +26,10 @@ public class UserService {
 
     public UUID CriarUsuario(CreateUserDto dto) {
 
+        if (userRepository.findByEmail(dto.email()) != null) {
+            throw new RuntimeException("Já existe um usuário cadastrado com esse email.");
+        }
+
         var entity = new User(
                 UUID.randomUUID(),
                 "interessado",
@@ -40,7 +44,6 @@ public class UserService {
         return UsuarioSalvo.getId();
     }
 
-
     public List<User> ListarUsuarios(){
         return userRepository.findAll();
     }
@@ -48,11 +51,16 @@ public class UserService {
     public Optional<User> ListarPorId(String userId) {
 
         var id = UUID.fromString(userId);
-        return userRepository.findById(id);
+        var UserEntity = userRepository.findById(id);
+        if (UserEntity.isPresent()){
+            return UserEntity;
+        }else{
+            throw new RuntimeException("Usuário com ID " + userId + " não encontrado");
+        }
 
     }
 
-    public void AtualizarUsuario(String userId, UpdateUserDto updateUserDto) {
+    public void UpdateUser(String userId, UpdateUserDto updateUserDto) {
         var id = UUID.fromString(userId);
         var UserEntity = userRepository.findById(id);
 
@@ -66,13 +74,13 @@ public class UserService {
                 if (updateUserDto.email().contains("@")) {
                     user.setEmail(updateUserDto.email());
                 }else{
-                    log.error("Email invalido");
+                    throw new RuntimeException("Email invalido.");
                 }
 
             }
             if(updateUserDto.password() != null) {
                 if (updateUserDto.password().equals(user.getPassword())) {
-                    log.info("Sua senha nao pode ser igual a senha atual");
+                    throw new RuntimeException("Sua senha não pode ser igual a senha anterior");
                 }else{
                     user.setPassword(updateUserDto.password());
                 }
@@ -80,13 +88,12 @@ public class UserService {
             }
 
             userRepository.save(user);
-            log.info("Usuário {} atualizado com sucesso.", user.getName());
         } else {
-            log.error("Erro: Usuário com ID {} não encontrado.", userId);
+            throw new RuntimeException("Usuário com ID " + userId + " não encontrado");
         }
     }
 
-    public void DeletarUsuario(String userId) {
+    public void DeleteUser(String userId) {
 
         var id = UUID.fromString(userId);
         var UsuarioExiste = userRepository.existsById(id);
@@ -94,10 +101,9 @@ public class UserService {
         if(UsuarioExiste){
             userRepository.deleteById(id);
         }else{
-            log.error("Erro: Usuário com ID {} não encontrado.", userId);
+            throw new RuntimeException("Usuário com ID " + userId + " não encontrado.");
         }
 
     }
-
 
 }
