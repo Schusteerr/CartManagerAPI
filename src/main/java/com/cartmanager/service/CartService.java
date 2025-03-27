@@ -1,20 +1,19 @@
 package com.cartmanager.service;
 
-import jakarta.transaction.Transactional;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.cartmanager.entity.Product;
 import com.cartmanager.entity.User;
 import com.cartmanager.repository.ProductRepository;
 import com.cartmanager.repository.UserRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import jakarta.transaction.Transactional;
 
 @Service
 public class CartService {
 
-    private static final Logger log = LogManager.getLogger(CartService.class);
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
 

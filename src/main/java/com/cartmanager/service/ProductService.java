@@ -1,21 +1,18 @@
 package com.cartmanager.service;
 
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
 import com.cartmanager.controller.CreateProductDto;
 import com.cartmanager.controller.UpdateProductDto;
 import com.cartmanager.entity.Product;
 import com.cartmanager.repository.ProductRepository;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.UUID;
-
 @Service
 public class ProductService {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
     private final ProductRepository productRepository;
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
