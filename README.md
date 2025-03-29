@@ -99,4 +99,5 @@ mvn spring-boot:run
 Quando o status do usuário é alterado para **"comprou"** ou **"cancelou"**, um endpoint de postback é acionado, gerando uma notificação para sistemas externos. Isso garante que as mudanças de status sejam comunicadas de forma eficiente.
 
 ## 🔮 Futuras Melhorias
+- Authentication & Authorization
 - Implementar proxy reverso com Nginx.
